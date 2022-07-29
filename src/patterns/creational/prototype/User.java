@@ -74,7 +74,6 @@ public abstract class User {
         }else {
             System.out.println("Library is closed, come back next time");
         }
-
     }
 
     public ArrayList<Book> stringToBooks(String strBooks){
@@ -147,7 +146,6 @@ public abstract class User {
     public void setLibrary(Library library) {
         this.library = library;
     }
-
 
     public String getBooksID(){
         ArrayList<String > str = new ArrayList<>();

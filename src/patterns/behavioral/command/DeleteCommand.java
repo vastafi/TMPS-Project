@@ -23,8 +23,8 @@ public class DeleteCommand implements Command{
             if (rowsDeleted > 0) {
                 System.out.println("A user was deleted successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 

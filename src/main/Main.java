@@ -39,6 +39,7 @@ public class Main {
             int select = scanner.nextInt();
             scanner.nextLine();
             switch (select){
+
                 case 1:
                     ArrayList<Book> myBooks = library.select.getBooksByUserID(std.getId(),lib.getId());
                     if (myBooks.size() > 0){
@@ -49,6 +50,7 @@ public class Main {
                         }
                     }else System.out.println("You dont take books");
                     break;
+
                 case 2:
                     myBooks = library.select.getAvailableBooksByUserID(std.getId(),lib.getId());
                     if (myBooks.size() > 0){
@@ -59,6 +61,7 @@ public class Main {
                         }
                     }else System.out.println("No books available");
                     break;
+
                 case 3:
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
@@ -70,6 +73,7 @@ public class Main {
                         library.select.getBookByID(id);
                     }else System.out.println("\tBook is not available or not exist");
                     break;
+
                 case 4:
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
@@ -81,23 +85,24 @@ public class Main {
                         library.select.getBookByID(id);
                     }else System.out.println("\tBook is not available or not exist");
                     break;
+
                 case 5:
                     System.out.println("\n\tEnter new book:");
-                    System.out.print("name: ");
+                    System.out.print("Name: ");
                     String name =  scanner.nextLine();
-                    System.out.print("author: ");
+                    System.out.print("Author: ");
                     String author = scanner.nextLine();
-                    System.out.print("year: ");
+                    System.out.print("Year: ");
                     int year = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("category: ");
+                    System.out.print("Category: ");
                     String category = scanner.nextLine();
-                    System.out.print("accessGrade: ");
+                    System.out.print("AccessGrade: ");
                     int accessGrade = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("publisher: ");
+                    System.out.print("Publisher: ");
                     String publisher = scanner.nextLine();
-                    System.out.print("publishDate: ");
+                    System.out.print("PublishDate: ");
                     int publishDate = scanner.nextInt();
                     scanner.nextLine();
 
@@ -108,9 +113,7 @@ public class Main {
                     return;
             }
         }
-
     }
-
 
     public static void loginLoop(){
         Scanner scanner = new Scanner(System.in);
@@ -160,6 +163,7 @@ public class Main {
                     Student st = new Student(name, surname, birthYear, university,accessGrade, lib, faculty, group);
                     library.insert.execute(st);
                     break;
+
                 case 0:
                     System.out.println("You have exited the main menu!");
                     return;

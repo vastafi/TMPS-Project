@@ -20,8 +20,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -33,8 +33,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -46,8 +46,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -59,8 +59,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -72,8 +72,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -100,8 +100,8 @@ public class SelectCommand {
                         selectLibByID(library_id),faculty,grp);
                 return student;
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
         return null;
     }
@@ -257,12 +257,10 @@ public class SelectCommand {
                 return result.getInt(1);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
-
 
         return 0;
     }
-
 }

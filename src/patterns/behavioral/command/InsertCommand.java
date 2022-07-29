@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 public class InsertCommand implements Command{
     Connection conn = SingletonDB.getInstance();
 
-
     @Override
     public void execute(Student student) {
         String sql = "INSERT INTO users (name, surname, birthYear, university, accessGrade, library_id, " +
@@ -32,11 +31,9 @@ public class InsertCommand implements Command{
                 System.out.println("A new user was inserted successfully!");
                 System.out.println("\t Your login id: " + new SelectCommand().getLastInsertedUserID());
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -62,7 +59,6 @@ public class InsertCommand implements Command{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -77,9 +73,8 @@ public class InsertCommand implements Command{
             if (rowsInserted > 0){
                 System.out.println("A new library was inserted successfully!");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
-
 }

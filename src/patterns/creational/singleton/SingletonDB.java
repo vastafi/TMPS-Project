@@ -24,10 +24,8 @@ public class SingletonDB {
             statement = connection.createStatement();
             statement.executeQuery(sql);
             System.out.println("\tRequest was completed");
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
     }
-
-
 }

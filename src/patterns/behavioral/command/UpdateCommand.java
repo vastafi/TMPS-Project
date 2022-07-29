@@ -15,12 +15,10 @@ public class UpdateCommand implements Command{
 
     @Override
     public void execute(Student student) {
-
     }
 
     @Override
     public void execute(Book book) {
-
     }
 
     @Override
@@ -37,8 +35,8 @@ public class UpdateCommand implements Command{
             if (rowsUpdated > 0) {
                 System.out.println("An existing library was updated successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -52,8 +50,8 @@ public class UpdateCommand implements Command{
             if (rowsUpdated > 0) {
                 System.out.println("\tBook was taken successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
     public void makeBookAvailable(int book_id, int user_id ){
@@ -66,8 +64,8 @@ public class UpdateCommand implements Command{
             if (rowsUpdated > 0) {
                 System.out.println("\tBook was taken successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 }
