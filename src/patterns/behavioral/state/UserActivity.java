@@ -1,6 +1,6 @@
 package patterns.behavioral.state;
 
-import internal.services.LibrarianLoop;
+import internal.models.Library;
 import internal.services.UserLoop;
 import patterns.creational.prototype.Student;
 

@@ -1,5 +1,6 @@
 package patterns.behavioral.state;
 
+import internal.models.Library;
 import patterns.creational.prototype.Student;
 
 public interface Activity {

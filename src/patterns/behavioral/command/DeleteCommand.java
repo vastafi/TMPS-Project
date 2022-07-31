@@ -12,7 +12,6 @@ import java.sql.SQLException;
 public class DeleteCommand implements Command{
     Connection conn = SingletonDB.getInstance();
 
-
     @Override
     public void execute(Student student) {
         String sql = "delete from users where user_id=" + student.getId();
@@ -23,8 +22,8 @@ public class DeleteCommand implements Command{
             if (rowsDeleted > 0) {
                 System.out.println("A user was deleted successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -38,8 +37,8 @@ public class DeleteCommand implements Command{
             if (rowsDeleted > 0) {
                 System.out.println("A book was deleted successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -53,8 +52,8 @@ public class DeleteCommand implements Command{
             if (rowsDeleted > 0) {
                 System.out.println("A library was deleted successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 }

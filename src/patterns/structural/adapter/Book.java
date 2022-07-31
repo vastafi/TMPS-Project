@@ -19,7 +19,6 @@ public class Book extends Publish {
         this.author = "unknown";
         this.category = "unknown";
         this.available = true;
-
     }
 
     //for creating model
@@ -48,7 +47,6 @@ public class Book extends Publish {
         this.publisher =publisher;
         this.publishDate = publishDate;
         this.user_id = user_id;
-
     }
 
     public void toStringBook(){
@@ -70,7 +68,6 @@ public class Book extends Publish {
         this.available = false;
         return this;
     }
-
     public Library getLibrary() {
         return library;
     }

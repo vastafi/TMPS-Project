@@ -1,8 +1,11 @@
 package main;
 
-
 import internal.models.Library;
 import internal.models.MainData;
+import patterns.behavioral.command.DeleteCommand;
+import patterns.behavioral.command.InsertCommand;
+import patterns.behavioral.command.SelectCommand;
+import patterns.behavioral.command.UpdateCommand;
 import patterns.behavioral.state.LibrarianActivity;
 import patterns.behavioral.state.UserActivity;
 import patterns.creational.prototype.Student;
@@ -166,8 +169,4 @@ public class Main {
             }
         }
     }
-
-
-
-
 }

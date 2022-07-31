@@ -2,7 +2,6 @@ package patterns.behavioral.command;
 
 import internal.models.Library;
 import patterns.creational.prototype.Student;
-import patterns.creational.prototype.User;
 import patterns.creational.singleton.SingletonDB;
 import patterns.structural.adapter.Book;
 
@@ -19,8 +18,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -45,8 +44,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -58,8 +57,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -71,8 +70,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
@@ -99,8 +98,8 @@ public class SelectCommand {
                         selectLibByID(library_id),faculty,grp);
                 return student;
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
         return null;
     }
@@ -121,11 +120,9 @@ public class SelectCommand {
                 tempLib.setNrBooks();
 
                 return tempLib;
-
-
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
         return null;
     }
@@ -150,8 +147,8 @@ public class SelectCommand {
                 libraries.add(tempLib);
 
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return libraries;
     }
@@ -193,10 +190,8 @@ public class SelectCommand {
                         selectLibByID(library_id), user_id) ;
                 tempBooks.add(tmpBook);
             }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
         return tempBooks;
     }
@@ -221,8 +216,8 @@ public class SelectCommand {
                 return new Book(book_id, name,author, category, year, accessGrade, available,publisher,publishDate,
                         selectLibByID(library_id), user_id) ;
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception exception){
+            exception.printStackTrace();
         }
         return null;
     }
@@ -237,11 +232,9 @@ public class SelectCommand {
                 return result.getInt(1);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
-
-
         return 0;
     }
 
