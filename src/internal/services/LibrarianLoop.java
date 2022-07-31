@@ -72,7 +72,7 @@ public class LibrarianLoop extends MainData {
                     break;
                 case 4:
                     System.out.println("\n\tEnter book id:");
-                    System.out.print("id: ");
+                    System.out.print("Id: ");
 
                     id = scanner.nextInt();
                     scanner.nextLine();

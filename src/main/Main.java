@@ -44,7 +44,7 @@ public class Main {
             switch (select){
                 case 1:
                     System.out.println("\n\tEnter the user id:");
-                    System.out.print("id: ");
+                    System.out.print("Id: ");
 
                     int id = sc.nextInt();
                     if (library.select.isUser(id)){
