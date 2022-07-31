@@ -49,7 +49,7 @@ public class UserLoop extends MainData {
                     break;
                 case 3:
                     System.out.println("\n\tEnter book id:");
-                    System.out.print("id: ");
+                    System.out.print("Id: ");
 
                     int id = scanner.nextInt();
                     scanner.nextLine();

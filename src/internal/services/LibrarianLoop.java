@@ -40,21 +40,21 @@ public class LibrarianLoop extends MainData {
                     break;
                 case 2:
                     System.out.println("\n\tEnter new book:");
-                    System.out.print("name: ");
+                    System.out.print("Name: ");
                     String name =  scanner.nextLine();
-                    System.out.print("author: ");
+                    System.out.print("Author: ");
                     String author = scanner.nextLine();
-                    System.out.print("year: ");
+                    System.out.print("Year: ");
                     int year = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("category: ");
+                    System.out.print("Category: ");
                     String category = scanner.nextLine();
-                    System.out.print("accessGrade: ");
+                    System.out.print("AccessGrade: ");
                     int accessGrade = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("publisher: ");
+                    System.out.print("Publisher: ");
                     String publisher = scanner.nextLine();
-                    System.out.print("publishDate: ");
+                    System.out.print("PublishDate: ");
                     int publishDate = scanner.nextInt();
                     scanner.nextLine();
 
@@ -62,7 +62,7 @@ public class LibrarianLoop extends MainData {
                     break;
                 case 3:
                     System.out.println("\n\tEnter book id:");
-                    System.out.print("id: ");
+                    System.out.print("Id: ");
                     int id = scanner.nextInt();
                     scanner.nextLine();
                     if(library.select.isBook(id, lib.getId())){
@@ -79,29 +79,29 @@ public class LibrarianLoop extends MainData {
                     if(library.select.isBook(id, lib.getId())){
                         library.select.getBookByID(id);
                         System.out.println("\n\tUpdate book:");
-                        System.out.print("name: ");
+                        System.out.print("Name: ");
                         name =  scanner.nextLine();
-                        System.out.print("author: ");
+                        System.out.print("Author: ");
                         author = scanner.nextLine();
-                        System.out.print("category: ");
+                        System.out.print("Category: ");
                         category = scanner.nextLine();
-                        System.out.print("year: ");
+                        System.out.print("Year: ");
                         year = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.print("accessGrade: ");
+                        System.out.print("AccessGrade: ");
                         accessGrade = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.print("available: ");
+                        System.out.print("Available: ");
                         boolean available = scanner.nextBoolean();
                         scanner.nextLine();
-                        System.out.print("publisher: ");
+                        System.out.print("Publisher: ");
                         publisher = scanner.nextLine();
-                        System.out.print("publishDate: ");
+                        System.out.print("PublishDate: ");
                         publishDate = scanner.nextInt();
                         System.out.print("library id: ");
                         int lib_id = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.print("user id: ");
+                        System.out.print("User id: ");
                         int user_id = scanner.nextInt();
                         scanner.nextLine();
 
@@ -112,7 +112,7 @@ public class LibrarianLoop extends MainData {
                     break;
                 case 5:
                     System.out.println("\n\tEnter book id:");
-                    System.out.print("id: ");
+                    System.out.print("Id: ");
 
                     id = scanner.nextInt();
                     scanner.nextLine();

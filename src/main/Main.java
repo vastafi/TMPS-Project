@@ -62,33 +62,33 @@ public class Main {
                         usrLoop.doIt();
                         return;
                     } else {
-                        System.out.println("\tUser nu exista in baza de date");
+                        System.out.println("\tUser does not exist in the database");
                     }
                     break;
                 case 2:
                     System.out.println("\n\tEnter your data:");
-                    System.out.print("name: ");
+                    System.out.print("Name: ");
                     String name =  sc.nextLine();
-                    System.out.print("surname: ");
+                    System.out.print("Surname: ");
                     String surname = sc.nextLine();
-                    System.out.print("birthYear: ");
+                    System.out.print("BirthYear: ");
                     int birthYear =  sc.nextInt();
                     sc.nextLine();
-                    System.out.print("university: ");
+                    System.out.print("University: ");
                     String university =  sc.nextLine();
-                    System.out.print("accessGrade: ");
+                    System.out.print("AccessGrade: ");
                     int accessGrade =  sc.nextInt();
                     sc.nextLine();
-                    System.out.print("faculty: ");
+                    System.out.print("Faculty: ");
                     String faculty =  sc.nextLine();
-                    System.out.print("group: ");
+                    System.out.print("Group: ");
                     String group =  sc.nextLine();
 
                     Student st = new Student(name, surname, birthYear, university,accessGrade, lib, faculty, group);
                     library.insert.execute(st);
                     break;
                 case 0:
-                    System.out.println("Ati esit din meniu principal");
+                    System.out.println("You have exited the main menu!");
                     return;
 
             }
