@@ -15,7 +15,7 @@ public class LibrarianLoop extends MainData {
     }
 
     private void start(){
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("\n\t Librarian menu");
             System.out.println("1. Show all books");
@@ -25,8 +25,8 @@ public class LibrarianLoop extends MainData {
             System.out.println("5. Delete book by id");
             System.out.println("9. Open user menu ");
             System.out.println("0. Exit");
-            int select = sc.nextInt();
-            sc.nextLine();
+            int select = scanner.nextInt();
+            scanner.nextLine();
             switch (select){
                 case 1:
                     ArrayList<Book> myBooks = library.select.getAllBooks(usr.getId(),lib.getId());
@@ -41,30 +41,30 @@ public class LibrarianLoop extends MainData {
                 case 2:
                     System.out.println("\n\tEnter new book:");
                     System.out.print("name: ");
-                    String name =  sc.nextLine();
+                    String name =  scanner.nextLine();
                     System.out.print("author: ");
-                    String author = sc.nextLine();
+                    String author = scanner.nextLine();
                     System.out.print("year: ");
-                    int year = sc.nextInt();
-                    sc.nextLine();
+                    int year = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.print("category: ");
-                    String category = sc.nextLine();
+                    String category = scanner.nextLine();
                     System.out.print("accessGrade: ");
-                    int accessGrade = sc.nextInt();
-                    sc.nextLine();
+                    int accessGrade = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.print("publisher: ");
-                    String publisher = sc.nextLine();
+                    String publisher = scanner.nextLine();
                     System.out.print("publishDate: ");
-                    int publishDate = sc.nextInt();
-                    sc.nextLine();
+                    int publishDate = scanner.nextInt();
+                    scanner.nextLine();
 
                     library.insert.execute(new Book(lib, year, accessGrade, name, author, category, publisher, publishDate));
                     break;
                 case 3:
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
-                    int id = sc.nextInt();
-                    sc.nextLine();
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
                     if(library.select.isBook(id, lib.getId())){
                         System.out.println("Book :");
                         library.select.getBookByID(id).toStringBook();
@@ -74,36 +74,36 @@ public class LibrarianLoop extends MainData {
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
 
-                    id = sc.nextInt();
-                    sc.nextLine();
+                    id = scanner.nextInt();
+                    scanner.nextLine();
                     if(library.select.isBook(id, lib.getId())){
                         library.select.getBookByID(id);
                         System.out.println("\n\tUpdate book:");
                         System.out.print("name: ");
-                        name =  sc.nextLine();
+                        name =  scanner.nextLine();
                         System.out.print("author: ");
-                        author = sc.nextLine();
+                        author = scanner.nextLine();
                         System.out.print("category: ");
-                        category = sc.nextLine();
+                        category = scanner.nextLine();
                         System.out.print("year: ");
-                        year = sc.nextInt();
-                        sc.nextLine();
+                        year = scanner.nextInt();
+                        scanner.nextLine();
                         System.out.print("accessGrade: ");
-                        accessGrade = sc.nextInt();
-                        sc.nextLine();
+                        accessGrade = scanner.nextInt();
+                        scanner.nextLine();
                         System.out.print("available: ");
-                        boolean available = sc.nextBoolean();
-                        sc.nextLine();
+                        boolean available = scanner.nextBoolean();
+                        scanner.nextLine();
                         System.out.print("publisher: ");
-                        publisher = sc.nextLine();
+                        publisher = scanner.nextLine();
                         System.out.print("publishDate: ");
-                        publishDate = sc.nextInt();
+                        publishDate = scanner.nextInt();
                         System.out.print("library id: ");
-                        int lib_id = sc.nextInt();
-                        sc.nextLine();
+                        int lib_id = scanner.nextInt();
+                        scanner.nextLine();
                         System.out.print("user id: ");
-                        int user_id = sc.nextInt();
-                        sc.nextLine();
+                        int user_id = scanner.nextInt();
+                        scanner.nextLine();
 
                         library.update.updateBookByID(new Book(id,name,author,category, year,accessGrade, available,
                                 publisher, publishDate, lib, user_id));
@@ -114,8 +114,8 @@ public class LibrarianLoop extends MainData {
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
 
-                    id = sc.nextInt();
-                    sc.nextLine();
+                    id = scanner.nextInt();
+                    scanner.nextLine();
                     if(library.select.isBook(id, lib.getId())){
                         library.delete.execute(library.select.getBookByID(id));
 

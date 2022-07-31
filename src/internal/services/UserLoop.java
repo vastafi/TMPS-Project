@@ -15,7 +15,7 @@ public class UserLoop extends MainData {
     }
 
     public void start(){
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("\n\t User menu");
             System.out.println("1. Show my books");
@@ -24,8 +24,8 @@ public class UserLoop extends MainData {
             System.out.println("4. Return book by id");
             System.out.println("9. Open librarian menu ");
             System.out.println("0. Exit");
-            int select = sc.nextInt();
-            sc.nextLine();
+            int select = scanner.nextInt();
+            scanner.nextLine();
             switch (select){
                 case 1:
                     ArrayList<Book> myBooks = library.select.getBooksByUserID(usr.getId(),lib.getId());
@@ -51,8 +51,8 @@ public class UserLoop extends MainData {
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
 
-                    int id = sc.nextInt();
-                    sc.nextLine();
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
                     if(library.select.isAvailableBook(id, lib.getId())){
                         library.update.makeBookNotAvailable(id, usr.getId());
                         library.select.getBookByID(id);
@@ -62,8 +62,8 @@ public class UserLoop extends MainData {
                     System.out.println("\n\tEnter book id:");
                     System.out.print("id: ");
 
-                    id = sc.nextInt();
-                    sc.nextLine();
+                    id = scanner.nextInt();
+                    scanner.nextLine();
                     if(library.select.isUsersBook(id, lib.getId(), usr.getId())){
                         library.update.makeBookAvailable(id, usr.getId());
                         library.select.getBookByID(id);
