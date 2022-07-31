@@ -47,9 +47,9 @@ public class Library {
     }
 
     public void toStringLib(){
-        System.out.println("id : \t " + getId());
-        System.out.println("name: \t "+ getName());
-        System.out.println("location: \t" + getLocation());
+        System.out.println("Id : \t " + getId());
+        System.out.println("Name: \t "+ getName());
+        System.out.println("Location: \t" + getLocation());
         System.out.println("Nr of users: \t " + getNrUsers());
         System.out.println("Nr of books: \t " + getNrBooks());
     }
