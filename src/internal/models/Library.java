@@ -86,7 +86,7 @@ public class Library {
             Statement statement = SingletonDB.getInstance().createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()){
-                this.nrUsers = result.getInt("Total");
+                this.nrUsers = result.getInt("total");
             }
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -103,7 +103,7 @@ public class Library {
             Statement statement = SingletonDB.getInstance().createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()){
-                this.nrBooks = result.getInt("Total");
+                this.nrBooks = result.getInt("total");
             }
         } catch (SQLException exception) {
             exception.printStackTrace();
