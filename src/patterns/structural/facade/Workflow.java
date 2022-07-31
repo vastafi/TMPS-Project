@@ -1,6 +1,5 @@
 package patterns.structural.facade;
 
-import internal.models.Library;
 import patterns.creational.prototype.User;
 import patterns.structural.adapter.Book;
 

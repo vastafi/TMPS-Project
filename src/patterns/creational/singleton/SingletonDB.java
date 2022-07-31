@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class SingletonDB {
     public static Connection connection;
 
-    public SingletonDB(){
+    private SingletonDB(){
         connection = new PostgreSQLJDBC().createConnection();
     }
 

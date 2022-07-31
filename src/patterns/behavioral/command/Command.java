@@ -8,5 +8,4 @@ public interface Command {
     public void  execute(Student student);
     public void  execute(Book book);
     public void  execute(Library library);
-
 }

@@ -1,9 +1,6 @@
 package patterns.structural.adapter;
 
 import internal.models.Library;
-import patterns.behavioral.state.Activity;
-import patterns.behavioral.state.Reading;
-import patterns.behavioral.state.Waiting;
 
 public class Book extends Publish {
     private Library library;
@@ -12,8 +9,6 @@ public class Book extends Publish {
     private boolean available;
 
     private int user_id;
-    Activity activity;
-
     public Book(){}
     public Book(Library library, int id){
         this.library = library;
@@ -24,6 +19,7 @@ public class Book extends Publish {
         this.author = "unknown";
         this.category = "unknown";
         this.available = true;
+
     }
 
     //for creating model
@@ -52,6 +48,7 @@ public class Book extends Publish {
         this.publisher =publisher;
         this.publishDate = publishDate;
         this.user_id = user_id;
+
     }
 
     public void toStringBook(){
@@ -138,22 +135,18 @@ public class Book extends Publish {
         this.available = available;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
     //adapter part
     @Override
     public int getPublishYear() {
         return publishDate;
     }
-
-    //state part
-    public void setActivity(Activity activity){
-        this.activity = activity;
-    }
-
-    public void changeActivity(){
-        if (activity instanceof Reading){
-            setActivity(new Waiting());
-        }else {
-            setActivity(new Reading());
-        }
-    }
 }
+

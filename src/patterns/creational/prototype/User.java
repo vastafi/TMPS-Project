@@ -1,7 +1,5 @@
 package patterns.creational.prototype;
 
-import internal.models.Library;
-import patterns.behavioral.command.SelectCommand;
 import patterns.structural.adapter.Book;
 
 import java.util.ArrayList;

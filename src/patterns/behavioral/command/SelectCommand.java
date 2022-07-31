@@ -2,12 +2,11 @@ package patterns.behavioral.command;
 
 import internal.models.Library;
 import patterns.creational.prototype.Student;
+import patterns.creational.prototype.User;
 import patterns.creational.singleton.SingletonDB;
 import patterns.structural.adapter.Book;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class SelectCommand {
@@ -20,8 +19,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -33,21 +32,21 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
 
-    public boolean isBook(int id){
-        String sql = "select exists(select 1 from books where book_id="+ id+")" ;
+    public boolean isBook(int id, int lib_id){
+        String sql = "select exists(select 1 from books where book_id="+ id+" and library_id="+lib_id+")" ;
 
         try{
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -59,8 +58,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -72,8 +71,8 @@ public class SelectCommand {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             return result.next();
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -100,8 +99,8 @@ public class SelectCommand {
                         selectLibByID(library_id),faculty,grp);
                 return student;
             }
-        }catch (Exception exception){
-            exception.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return null;
     }
@@ -159,38 +158,19 @@ public class SelectCommand {
 
     public ArrayList<Book> getBooksByUserID(int userId, int lib_id) {
         String sql = "select * from books where user_id=" + userId + " and library_id=" + lib_id;
-        ArrayList<Book> tempBooks = new ArrayList<>();
-        try {
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-
-            while (rs.next()){
-                int book_id = rs.getInt("book_id");
-                String name = rs.getString("name");
-                String author = rs.getString("author");
-                String category =rs.getString("category");
-                int year = rs.getInt("year");
-                int accessGrade = rs.getInt("accessGrade");
-                boolean available = rs.getBoolean("available");
-                String publisher = rs.getString("publisher");
-                int publishDate = rs.getInt("publishDate");
-                int library_id = rs.getInt("library_id");
-                int user_id = rs.getInt("user_id");
-
-                Book tmpBook =new Book(book_id, name,author, category, year, accessGrade, available,publisher,publishDate,
-                        selectLibByID(library_id), user_id) ;
-                tempBooks.add(tmpBook);
-            }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return tempBooks;
+        return getBooks(sql);
     }
 
     public ArrayList<Book> getAvailableBooksByUserID(int userId, int lib_id) {
         String sql = "select * from books where user_id=" + userId + " and library_id=" + lib_id + " and available=TRUE" ;
+        return getBooks(sql);
+    }
+    public ArrayList<Book> getAllBooks(int userId, int lib_id) {
+        String sql = "select * from books" ;
+        return getBooks(sql);
+    }
+
+    private ArrayList<Book> getBooks(String sql){
         ArrayList<Book> tempBooks = new ArrayList<>();
         try {
             Statement statement = conn.createStatement();
@@ -257,10 +237,12 @@ public class SelectCommand {
                 return result.getInt(1);
             }
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
 
         return 0;
     }
+
 }

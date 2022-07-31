@@ -1,171 +1,91 @@
 package main;
 
+
 import internal.models.Library;
-import patterns.behavioral.command.DeleteCommand;
-import patterns.behavioral.command.InsertCommand;
-import patterns.behavioral.command.SelectCommand;
-import patterns.behavioral.command.UpdateCommand;
+import internal.models.MainData;
+import patterns.behavioral.state.LibrarianActivity;
+import patterns.behavioral.state.UserActivity;
 import patterns.creational.prototype.Student;
-import patterns.structural.adapter.Book;
+
 import patterns.structural.facade.WorkTracker;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    static Library lib;
+    static Student usr;
     static WorkTracker workTracker = new WorkTracker();
     static Library library = new Library(workTracker,
             new InsertCommand(),
             new UpdateCommand(),
             new SelectCommand(),
             new DeleteCommand());
-    static Library lib;
-    static Student std;
 
     public static void main(String[] args) {
         mainLoop();
     }
 
-    public static void userLoop(){
-        Scanner scanner = new Scanner(System.in);
-        while (true){
-            System.out.println("\n\t User menu");
-            System.out.println("1. Show my books");
-            System.out.println("2. Show available books");
-            System.out.println("3. Take book by id");
-            System.out.println("4. Return book by id");
-            System.out.println("5. Add to library new book");
-            System.out.println("0. Exit");
-            int select = scanner.nextInt();
-            scanner.nextLine();
-            switch (select){
-
-                case 1:
-                    ArrayList<Book> myBooks = library.select.getBooksByUserID(std.getId(),lib.getId());
-                    if (myBooks.size() > 0){
-                        System.out.println("\tAll my books:");
-                        for (Book book : myBooks){
-                            book.toStringBook();
-                            System.out.println();
-                        }
-                    }else System.out.println("You dont take books");
-                    break;
-
-                case 2:
-                    myBooks = library.select.getAvailableBooksByUserID(std.getId(),lib.getId());
-                    if (myBooks.size() > 0){
-                        System.out.println("\tAvailable books:");
-                        for (Book book : myBooks){
-                            book.toStringBook();
-                            System.out.println();
-                        }
-                    }else System.out.println("No books available");
-                    break;
-
-                case 3:
-                    System.out.println("\n\tEnter book id:");
-                    System.out.print("id: ");
-
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
-                    if(library.select.isAvailableBook(id, lib.getId())){
-                        library.update.makeBookNotAvailable(id, std.getId());
-                        library.select.getBookByID(id);
-                    }else System.out.println("\tBook is not available or not exist");
-                    break;
-
-                case 4:
-                    System.out.println("\n\tEnter book id:");
-                    System.out.print("id: ");
-
-                    id = scanner.nextInt();
-                    scanner.nextLine();
-                    if(library.select.isUsersBook(id, lib.getId(), std.getId())){
-                        library.update.makeBookAvailable(id, std.getId());
-                        library.select.getBookByID(id);
-                    }else System.out.println("\tBook is not available or not exist");
-                    break;
-
-                case 5:
-                    System.out.println("\n\tEnter new book:");
-                    System.out.print("Name: ");
-                    String name =  scanner.nextLine();
-                    System.out.print("Author: ");
-                    String author = scanner.nextLine();
-                    System.out.print("Year: ");
-                    int year = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Category: ");
-                    String category = scanner.nextLine();
-                    System.out.print("AccessGrade: ");
-                    int accessGrade = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Publisher: ");
-                    String publisher = scanner.nextLine();
-                    System.out.print("PublishDate: ");
-                    int publishDate = scanner.nextInt();
-                    scanner.nextLine();
-
-                    library.insert.execute(new Book(lib, year, accessGrade, name, author, category, publisher, publishDate));
-
-                case 0:
-                    System.out.println("\n\tUser menu is closed");
-                    return;
-            }
-        }
-    }
 
     public static void loginLoop(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         while (true){
             System.out.println("\n\tLogin menu");
             System.out.println("1. Login");
             System.out.println("2. Registration");
             System.out.println("0. Exit");
-            int select = scanner.nextInt();
-            scanner.nextLine();
+            int select = sc.nextInt();
+            sc.nextLine();
             switch (select){
                 case 1:
                     System.out.println("\n\tEnter the user id:");
                     System.out.print("id: ");
 
-                    int id = scanner.nextInt();
+                    int id = sc.nextInt();
                     if (library.select.isUser(id)){
                         System.out.println("\tUser ");
-                        std = library.select.selectUserByID(id).clone();
-                        std.toStringUser();
-                        userLoop();
+                        usr = library.select.selectUserByID(id).clone();
+                        usr.toStringUser();
+
+                        MainData usrLoop  = new MainData(lib, usr, library);
+                        if (usr.getAccessGrade() > 4){
+                            MainData.setActivity(new LibrarianActivity());
+                        }else {
+                            MainData.setActivity(new UserActivity());
+                        }
+
+                        usrLoop.doIt();
+                        return;
                     } else {
-                        System.out.println("\tUser does not exist in the database!");
+                        System.out.println("\tUser nu exista in baza de date");
                     }
                     break;
-
                 case 2:
                     System.out.println("\n\tEnter your data:");
-                    System.out.print("Name: ");
-                    String name =  scanner.nextLine();
-                    System.out.print("Surname: ");
-                    String surname = scanner.nextLine();
-                    System.out.print("BirthYear: ");
-                    int birthYear =  scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("University: ");
-                    String university =  scanner.nextLine();
-                    System.out.print("AccessGrade: ");
-                    int accessGrade =  scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Faculty: ");
-                    String faculty =  scanner.nextLine();
-                    System.out.print("Group: ");
-                    String group =  scanner.nextLine();
+                    System.out.print("name: ");
+                    String name =  sc.nextLine();
+                    System.out.print("surname: ");
+                    String surname = sc.nextLine();
+                    System.out.print("birthYear: ");
+                    int birthYear =  sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("university: ");
+                    String university =  sc.nextLine();
+                    System.out.print("accessGrade: ");
+                    int accessGrade =  sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("faculty: ");
+                    String faculty =  sc.nextLine();
+                    System.out.print("group: ");
+                    String group =  sc.nextLine();
 
                     Student st = new Student(name, surname, birthYear, university,accessGrade, lib, faculty, group);
                     library.insert.execute(st);
                     break;
-
                 case 0:
-                    System.out.println("You have exited the main menu!");
+                    System.out.println("Ati esit din meniu principal");
                     return;
 
             }
@@ -173,7 +93,7 @@ public class Main {
     }
 
     public static void mainLoop(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         while (true){
             System.out.println("\n\tMain menu");
             System.out.println("1. Show all libraries");
@@ -182,10 +102,9 @@ public class Main {
             System.out.println("4. Update library by id");
             System.out.println("5. Delete library by id");
             System.out.println("0. Exit");
-            int select = scanner.nextInt();
-            scanner.nextLine();
+            int select = sc.nextInt();
+            sc.nextLine();
             switch (select){
-
                 case 1:
                     ArrayList<Library> libs = library.select.getAllLibraries();
                     System.out.println("\n\tAll libraries");
@@ -194,11 +113,10 @@ public class Main {
                         System.out.println();
                     }
                     break;
-
                 case 2:
                     System.out.print("Lib id: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
+                    int id = sc.nextInt();
+                    sc.nextLine();
                     lib = library.select.selectLibByID(id);
                     if (lib != null){
                         System.out.println("You select this library:");
@@ -208,47 +126,48 @@ public class Main {
                         System.out.println("\tThis library id does not exist");
                     }
                     break;
-
                 case 3:
                     System.out.println("\tEnter all data");
                     System.out.print("Name: ");
-                    String name = scanner.nextLine();
+                    String name = sc.nextLine();
                     System.out.print("Location: ");
-                    String location = scanner.nextLine();
+                    String location = sc.nextLine();
                     library.insert.execute(new Library(name,location));
                     break;
-
                 case 4:
                     System.out.print("Lib id: ");
-                    id = scanner.nextInt();
-                    scanner.nextLine();
+                    id = sc.nextInt();
+                    sc.nextLine();
                     if(library.select.isLibrary(id)){
                         System.out.println("\tEnter all data");
                         System.out.print("Name: ");
-                        name = scanner.nextLine();
+                        name = sc.nextLine();
                         System.out.print("Location: ");
-                        location = scanner.nextLine();
+                        location = sc.nextLine();
                         library.update.execute(new Library(id, name, location));
                     }else {
                         System.out.println("\tThis library id does not exist");
                     }
                     break;
-
                 case 5:
                     System.out.print("Lib id: ");
-                    id = scanner.nextInt();
-                    scanner.nextLine();
+                    id = sc.nextInt();
+                    sc.nextLine();
                     if(library.select.isLibrary(id)){
                         library.delete.execute(library.select.selectLibByID(id));
                     }else {
                         System.out.println("\tThis library id does not exist");
                     }
                     break;
-
                 case 0:
                     System.out.println("\n\t Close Main menu");
                     return;
+
             }
         }
     }
+
+
+
+
 }

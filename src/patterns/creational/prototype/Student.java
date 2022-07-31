@@ -1,7 +1,5 @@
 package patterns.creational.prototype;
 
-import internal.models.Library;
-
 public class Student extends User{
     private String faculty;
     private String group;

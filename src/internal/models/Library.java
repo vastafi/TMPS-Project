@@ -1,12 +1,11 @@
 package internal.models;
 
 import patterns.behavioral.command.Command;
-import patterns.behavioral.command.SelectCommand;
-import patterns.behavioral.command.UpdateCommand;
 import patterns.creational.prototype.User;
 import patterns.creational.singleton.SingletonDB;
 import patterns.structural.adapter.Book;
 import patterns.structural.facade.WorkTracker;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +45,7 @@ public class Library {
         this.delete = delete;
     }
 
+
     public void toStringLib(){
         System.out.println("id : \t " + getId());
         System.out.println("name: \t "+ getName());
@@ -56,6 +56,7 @@ public class Library {
     //take all books that is available
     public ArrayList<Book> getAllBooks(){
         return new ArrayList<Book>();
+
     }
 
     public int getId() {
@@ -78,6 +79,8 @@ public class Library {
         return nrUsers;
     }
 
+
+
     public void setNrUsers() {
         String sql = "select count(*) as total from users where library_id=" + getId();
         try {
@@ -86,8 +89,8 @@ public class Library {
             while (result.next()){
                 this.nrUsers = result.getInt("total");
             }
-        } catch (SQLException exception) {
-            exception.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -103,8 +106,8 @@ public class Library {
             while (result.next()){
                 this.nrBooks = result.getInt("total");
             }
-        } catch (SQLException exception) {
-            exception.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
